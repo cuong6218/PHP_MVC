@@ -12,7 +12,7 @@ class StudentManager
         $db = new DBConnect();
         $this->database = $db->connect();
     }
-    function getAllBook()
+    function getAll()
     {
         $sql = "SELECT * FROM students";
         $stmt = $this->database->query($sql);
