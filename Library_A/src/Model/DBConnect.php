@@ -2,6 +2,7 @@
     namespace App\Model;
 
 use PDOException;
+use PDO;
 
 class DBConnect{
         private $dsn;
