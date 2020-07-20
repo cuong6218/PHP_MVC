@@ -17,7 +17,7 @@ class BookManager
         $data = $stmt->fetchAll();
         $books = [];
         foreach ($data as $item) {
-            $book = new Book($item['name'], $item['author'], $item['status']);
+            $book = new Book($item['name'], $item['author'], $item['status'], $item['image']);
             $book->setId($item['id']);
             array_push($books, $book);
         }
@@ -25,11 +25,12 @@ class BookManager
     }
     function add($book)
     {
-        $sql = "INSERT INTO `books`(`name`, `author`, `status`) VALUES (:name, :author, :status)";
+        $sql = "INSERT INTO `books`(`name`, `author`, `status`,`image`) VALUES (:name, :author, :status, :image)";
         $stmt = $this->database->prepare($sql);
         $stmt->bindParam(':name', $book->getName());
         $stmt->bindParam(':author', $book->getAuthor());
         $stmt->bindParam(':status', $book->getStatus());
+        $stmt->bindParam(':image', $book->getImage());
         $stmt->execute();
     }
     function delete($id)
@@ -50,12 +51,13 @@ class BookManager
     }
     function update($book)
     {
-        $sql = "UPDATE `books` SET `name`=:name,`author`=:author,`status`=:status WHERE `id` = :id";
+        $sql = "UPDATE `books` SET `name`=:name,`author`=:author,`status`=:status, `image`=:image WHERE `id` = :id";
         $stmt = $this->database->prepare($sql);
         $stmt->bindParam(':id', $book->getId());
         $stmt->bindParam(':name', $book->getName());
         $stmt->bindParam(':author', $book->getAuthor());
         $stmt->bindParam(':status', $book->getStatus());
+        $stmt->bindParam(':image', $book->getImage());
         $stmt->execute();
     }
     function search($keyword)
@@ -67,7 +69,7 @@ class BookManager
         $data = $stmt->fetchAll();
         $books = [];
         foreach ($data as $item) {
-            $book = new Book($item['name'], $item['author'], $item['status']);
+            $book = new Book($item['name'], $item['author'], $item['status'], $item['image']);
             $book->setId($item['id']);
             array_push($books, $book);
         }

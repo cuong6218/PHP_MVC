@@ -1,14 +1,14 @@
 <?php
 
 use App\Controller\BookController;
-use App\Controller\BorrowCardController;
+use App\Controller\BorrowController;
 use App\Controller\ReaderController;
 
 require __DIR__ . "/vendor/autoload.php";
 
 $bookController = new BookController();
 $readerController = new ReaderController();
-$borrowController = new BorrowCardController();
+$borrowController = new BorrowController();
 $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : "";
 switch ($page) {
     case 'list-book':
@@ -39,10 +39,10 @@ switch ($page) {
         $readerController->updateReader();
         break;
     case 'list-borrow':
-        $borrowController->viewBorrowCard();
+        $borrowController->viewBorrow();
         break;
     case 'add-borrow':
-        $borrowController->addBorrowCard();
+        $borrowController->addBorrow();
         break;
     default:
         $bookController->viewBook();

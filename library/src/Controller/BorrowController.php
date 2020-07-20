@@ -3,21 +3,21 @@
 namespace App\Controller;
 
 use App\Model\BorrowCard;
-use App\Model\BorrowCardManager;
+use App\Model\BorrowManager;
 
-class BorrowCardController
+class BorrowController
 {
     private $borrowCardManager;
     function __construct()
     {
-        $this->borrowCardManager = new BorrowCardManager();
+        $this->borrowCardManager = new BorrowManager();
     }
-    function viewBorrowCard()
+    function viewBorrow()
     {
         $borrowCards = $this->borrowCardManager->getAll();
         include_once('src/View/borrowCard_view/list-borrow.php');
     }
-    function addBorrowCard()
+    function addBorrow()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET')
             include_once('src/View/borrowCard_view/add-borrow.php');

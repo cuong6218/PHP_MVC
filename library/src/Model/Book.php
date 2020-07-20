@@ -8,11 +8,13 @@ class Book
     private $name;
     private $author;
     private $status;
-    function __construct($name, $author, $status)
+    private $image;
+    function __construct($name, $author, $status, $image)
     {
         $this->name = $name;
         $this->author = $author;
         $this->status = $status;
+        $this->image = $image;
     }
 
 
@@ -92,6 +94,26 @@ class Book
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @return  self
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }

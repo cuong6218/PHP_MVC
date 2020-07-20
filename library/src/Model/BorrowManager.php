@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class BorrowCardManager
+class BorrowManager
 {
     private $database;
     function __construct()

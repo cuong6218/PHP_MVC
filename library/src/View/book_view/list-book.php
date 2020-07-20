@@ -10,6 +10,7 @@
         <th>Name of book</th>
         <th>Author</th>
         <th>Status</th>
+        <th>Image</th>
         <th colspan="2">Action</th>
     </tr>
     <?php if (empty($books)) : ?>
@@ -23,6 +24,7 @@
                 <td><?php echo $book->getName() ?></td>
                 <td><?php echo $book->getAuthor() ?></td>
                 <td><?php echo $book->getStatus() ?></td>
+                <td><?php echo $book->getImage() ?></td>
                 <td><a href="index.php?page=update-book&id=<?php echo $book->getId() ?>">Update</a> </td>
                 <td><a href="index.php?page=delete-book&id=<?php echo $book->getId() ?>">Delete</a> </td>
             </tr>
