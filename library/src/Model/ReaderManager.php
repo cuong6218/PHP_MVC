@@ -53,6 +53,7 @@ class ReaderManager
     {
         $sql = "UPDATE `readers` SET `name`=:name,`age`=:age,`phone`=:phone,`email`=:email WHERE `id` = :id";
         $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':id', $reader->getId());
         $stmt->bindParam(':name', $reader->getName());
         $stmt->bindParam(':age', $reader->getAge());
         $stmt->bindParam(':phone', $reader->getPhone());

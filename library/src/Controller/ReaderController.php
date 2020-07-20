@@ -39,8 +39,9 @@ class ReaderController
             header('location:index.php?page=list-reader');
         }
     }
-    function updateReader(){
-        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+    function updateReader()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = $_REQUEST['id'];
             $reader = $this->readerManager->getReaderById($id);
             include_once('src/View/reader_view/update-reader.php');
@@ -51,6 +52,7 @@ class ReaderController
             $phone = $_REQUEST['phone'];
             $email = $_REQUEST['email'];
             $reader = new Reader($name, $age, $phone, $email);
+            $reader->setId($id);
             $this->readerManager->update($reader);
             header('location:index.php?page=list-reader');
         }
